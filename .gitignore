@@ -1,0 +1,4 @@
+.idea
+.gradle
+scripts/downloads/*
+webapps/jasper-bridge.war

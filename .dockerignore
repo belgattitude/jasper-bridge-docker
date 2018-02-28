@@ -1,0 +1,6 @@
+*.md
+*.iml
+.idea
+.gradle
+scripts
+docker-compose.yml

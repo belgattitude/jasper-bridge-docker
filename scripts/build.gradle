@@ -1,0 +1,71 @@
+apply plugin: 'war'
+
+group = "io.soluble.pjb"
+archivesBaseName = 'jasper-bridge'
+version = "1.0.0-SNAPSHOT"
+description = "PHP Jasper bridge"
+
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven {
+        url 'http://jaspersoft.artifactoryonline.com/jaspersoft/third-party-ce-artifacts/'
+    }
+    maven {
+        url 'https://jaspersoft.artifactoryonline.com/jaspersoft/jr-ce-releases'
+    }
+}
+
+dependencies {
+    providedCompile('javax.servlet:servlet-api:2.5')
+
+    runtime('log4j:log4j:1.2.17')
+
+    /**
+     * Jasper report base (required)
+     */
+    compile 'net.sf.jasperreports:jasperreports:6.5.+'
+    runtime 'net.sf.jasperreports:jasperreports-fonts:6.+'
+    runtime 'net.sf.jasperreports:jasperreports-functions:6.5.+'
+
+    /**
+     * Jasper report complements (feel free to comment)
+     */
+    runtime 'net.sourceforge.barbecue:barbecue:1.5-beta1'
+    runtime 'net.sf.barcode4j:barcode4j:2.1'
+    runtime 'xalan:xalan:2.7.+'
+    runtime 'org.apache.poi:poi:3.+'
+    runtime 'org.apache.poi:poi-ooxml:3.+'
+    runtime 'org.apache.xmlgraphics:batik-bridge:1.9.+'
+    runtime 'org.apache.xmlgraphics:batik-svggen:1.9.+'
+    runtime 'org.apache.ant:ant:1.7.1'
+    runtime 'antlr:antlr:2.7.+'
+    runtime 'jaxen:jaxen:1.1.+'
+    runtime 'org.apache-extras.beanshell:bsh:2.0b6'
+
+    /**
+     * Jasper report language support (feel free to comment)
+     *   Note that groovy is a must for jasper... where javascript
+     *   (rhino) can be removed if not used
+     */
+    runtime 'org.codehaus.groovy:groovy-all:2.4.+'
+    runtime 'org.mozilla:rhino:1.7.+'
+
+    /**
+     * Other helpful libraries oy might need
+     * Add as needed
+     */
+    runtime 'mysql:mysql-connector-java:6.+'
+
+}
+
+war {
+    classifier 'web'
+    archiveName = "jasper-bridge.war"
+}
+

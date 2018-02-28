@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: pjb-docker:head
+    environment:
+      - CATALINA_OPTS=-Xmx4g -Xms4g
+      - JVM_OPTS=-Xmx4g -Xms4g
+    ports:
+      - "8888:8080"
+      - "9267:9267"
