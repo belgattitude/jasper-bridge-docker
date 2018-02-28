@@ -10,13 +10,13 @@ Repo to create a docker image with ready-to-run '[php-java-bridge](https://githu
 ## Build the image locally. 
 
 ```bash
-$ docker build -t pjb_docker_image .
+$ docker build -t jasper-bridge-image .
 ```
 
 ## Launch the image in a container
 
 ```bash
-$ docker run -d -p 8888:8080 -p 9267:9267 --name pjb_docker_container pjb_docker_image
+$ docker run -d -p 8888:8080 -p 9267:9267 --name jasper-bridge jasper-bridge-image
 ```
 
 > Tomcat is now available on port 8888 from the host. 
@@ -29,19 +29,19 @@ $ docker run -d -p 8888:8080 -p 9267:9267 --name pjb_docker_container pjb_docker
 ### Shell into the container
 
 ```bash
-$ docker exec -it pjb_docker_container bash
+$ docker exec -it jasper-bridge bash
 ```
 
 ### Stop the container
 
 ```bash
-$ docker stop pjb_docker_container
+$ docker stop jasper-bridge
 ```
 
 ### Remove the container
 
 ```bash
-$ docker rm pjb_docker_container
+$ docker rm jasper-bridge
 ```
 
 
