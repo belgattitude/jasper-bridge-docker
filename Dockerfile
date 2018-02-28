@@ -12,6 +12,12 @@ RUN apk --update add php7 php7-cgi
 # Add webapps
 ADD webapps/jasper-bridge.war /usr/local/tomcat/webapps/jasper-bridge.war
 
+# Manual deploy
+RUN apk add unzip &&\
+    unzip /usr/local/tomcat/webapps/jasper-bridge.war -d /usr/local/tomcat/webapps/jasper-bridge &&\
+    rm /usr/local/tomcat/webapps/jasper-bridge.war &&\
+    apk del unzip
+
 #RUN "sh ./scripts/build-jasper-bridge-servlet.sh"
 #ADD tomcat-users.xml /usr/local/tomcat/conf/
 #ADD context.xml /usr/local/tomcat/webapps/manager/META-INF/context.xml
